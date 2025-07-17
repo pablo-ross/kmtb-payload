@@ -1,5 +1,5 @@
 # Project Tree
-Generated on: 2025-07-17, 15:24:01 CEST
+Generated on: 2025-07-17, 15:55:31 CEST
 
 This tree only includes files tracked by git (respects .gitignore)
 
@@ -20,9 +20,11 @@ This tree only includes files tracked by git (respects .gitignore)
 ├── Makefile
 ├── next.config.js
 ├── package.json
+├── package-lock.json
 ├── payload.config.ts
+├── pnpm-lock.yaml
 ├── README.md
 └── TREE.md
 
-1 directory, 17 files
+1 directory, 19 files
 ```

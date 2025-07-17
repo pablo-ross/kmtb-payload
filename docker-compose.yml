@@ -1,7 +1,6 @@
-version: '3.8'
-
 services:
-  payload:
+  payload-prod:
+    container_name: prod
     build: 
       context: .
       dockerfile: Dockerfile
@@ -18,10 +17,11 @@ services:
         condition: service_healthy
     restart: unless-stopped
     networks:
-      - kmtb-payload
+      - payload-network
 
   payload-dev:
-    image: node:18-alpine
+    container_name: dev
+    image: node:20-alpine
     working_dir: /app
     ports:
       - "${APP_PORT:-3030}:3030"
@@ -38,11 +38,12 @@ services:
       mongo:
         condition: service_healthy
     networks:
-      - kmtb-payload
+      - payload-network
     profiles:
       - dev
 
   mongo:
+    container_name: mongo
     image: mongo:6
     restart: unless-stopped
     ports:
@@ -58,11 +59,13 @@ services:
       retries: 5
       start_period: 30s
     networks:
-      - kmtb-payload
+      - payload-network
 
 volumes:
   mongo_data:
+    name: mongo_data
 
 networks:
-  kmtb-payload:
+  payload-network:
+    name: payload
     driver: bridge

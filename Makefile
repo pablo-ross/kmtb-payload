@@ -12,7 +12,7 @@ help:
 
 # Development environment
 dev:
-	docker compose --profile dev up payload-dev mongo
+	docker compose --profile dev up -d payload-dev mongo
 
 # Build production image
 build:
