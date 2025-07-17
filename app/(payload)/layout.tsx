@@ -1,30 +1,19 @@
-// app/(payload)/layout.tsx
-/* THIS FILE WAS GENERATED AUTOMATICALLY BY PAYLOAD. */
+// app/layout.tsx
 import type { Metadata } from 'next'
 
-import config from '@payload-config'
-import { RootLayout } from '@payloadcms/next/layouts'
-import { importMap } from '../../importMap.js'
-
-import './custom.scss'
-
-type Args = {
-  children: React.ReactNode
-}
-
 export const metadata: Metadata = {
-  title: 'Payload Admin',
-  description: 'Payload CMS Admin Panel',
+  title: 'Payload CMS',
+  description: 'Payload CMS with Next.js',
 }
 
-const Layout = ({ children }: Args) => (
-  <RootLayout 
-    config={config} 
-    importMap={importMap}
-    serverFunction={() => Promise.resolve(null)}
-  >
-    {children}
-  </RootLayout>
-)
-
-export default Layout
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}

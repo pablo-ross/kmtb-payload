@@ -50,5 +50,4 @@ coverage/
 Thumbs.db
 
 # pnpm
-
 .pnpm-store

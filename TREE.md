@@ -1,11 +1,16 @@
 # Project Tree
-Generated on: 2025-07-17, 17:04:33 CEST
+Generated on: 2025-07-17, 17:29:54 CEST
 
 This tree only includes files tracked by git (respects .gitignore)
 
 ```
 .
 ├── app
+│   ├── api
+│   │   └── test
+│   │       └── route.ts
+│   ├── debug
+│   │   └── page.tsx
 │   ├── layout.tsx
 │   ├── page.tsx
 │   └── (payload)
@@ -17,7 +22,8 @@ This tree only includes files tracked by git (respects .gitignore)
 │       │   └── [[...slug]]
 │       │       └── route.ts
 │       ├── custom.scss
-│       └── layout.tsx
+│       ├── layout.tsx
+│       └── serverFunction.ts
 ├── collections
 │   ├── Categories.ts
 │   ├── Media.ts
@@ -41,5 +47,5 @@ This tree only includes files tracked by git (respects .gitignore)
 ├── TREE.md
 └── tsconfig.json
 
-7 directories, 28 files
+10 directories, 31 files
 ```
