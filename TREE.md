@@ -1,10 +1,23 @@
 # Project Tree
-Generated on: 2025-07-17, 15:55:31 CEST
+Generated on: 2025-07-17, 16:31:39 CEST
 
 This tree only includes files tracked by git (respects .gitignore)
 
 ```
 .
+├── app
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── (payload)
+│       ├── admin
+│       │   ├── importMap.js
+│       │   └── [[...segments]]
+│       │       └── page.tsx
+│       ├── api
+│       │   └── [[...slug]]
+│       │       └── route.ts
+│       ├── custom.scss
+│       └── layout.tsx
 ├── collections
 │   ├── Categories.ts
 │   ├── Media.ts
@@ -17,14 +30,16 @@ This tree only includes files tracked by git (respects .gitignore)
 ├── .dockerignore
 ├── .env.example
 ├── .gitignore
+├── importMap.js
 ├── Makefile
 ├── next.config.js
+├── next-env.d.ts
 ├── package.json
-├── package-lock.json
 ├── payload.config.ts
 ├── pnpm-lock.yaml
 ├── README.md
-└── TREE.md
+├── TREE.md
+└── tsconfig.json
 
-1 directory, 19 files
+7 directories, 28 files
 ```

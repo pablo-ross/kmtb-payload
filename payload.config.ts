@@ -41,4 +41,10 @@ export default buildConfig({
   }),
   sharp,
   plugins: [],
+  cors: [
+    process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  ],
+  csrf: [
+    process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  ],
 })

@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "${APP_PORT:-3030}:3030"
+      - "${APP_PORT:-3000}:3000"
     env_file:
       - .env
     environment:
@@ -24,7 +24,7 @@ services:
     image: node:20-alpine
     working_dir: /app
     ports:
-      - "${APP_PORT:-3030}:3030"
+      - "${APP_PORT:-3000}:3000"
     env_file:
       - .env
     environment:
@@ -33,7 +33,7 @@ services:
       - .:/app
       - /app/node_modules
       - /app/.next
-    command: sh -c "npm install && npm run dev"
+    command: sh -c "npm install -g pnpm && pnpm install && pnpm run dev"
     depends_on:
       mongo:
         condition: service_healthy
@@ -63,9 +63,9 @@ services:
 
 volumes:
   mongo_data:
-    name: mongo_data
+    name: mongo
 
 networks:
   payload-network:
-    name: payload
     driver: bridge
+    name: payload
