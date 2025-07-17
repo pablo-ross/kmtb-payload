@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 
 import config from '@payload-config'
 import { RootLayout } from '@payloadcms/next/layouts'
+import { importMap } from '../../importMap.js'
 
 import './custom.scss'
 
@@ -16,6 +17,14 @@ export const metadata: Metadata = {
   description: 'Payload CMS Admin Panel',
 }
 
-const Layout = ({ children }: Args) => <RootLayout config={config}>{children}</RootLayout>
+const Layout = ({ children }: Args) => (
+  <RootLayout 
+    config={config} 
+    importMap={importMap}
+    serverFunction={() => Promise.resolve(null)}
+  >
+    {children}
+  </RootLayout>
+)
 
 export default Layout
