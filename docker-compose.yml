@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  payload:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${APP_PORT:-3030}:3030"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./media:/app/media
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - kmtb-payload
+
+  payload-dev:
+    image: node:18-alpine
+    working_dir: /app
+    ports:
+      - "${APP_PORT:-3030}:3030"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    command: sh -c "npm install && npm run dev"
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - kmtb-payload
+    profiles:
+      - dev
+
+  mongo:
+    image: mongo:6
+    restart: unless-stopped
+    ports:
+      - "${MONGO_PORT:-27017}:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE:-payload}
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - kmtb-payload
+
+volumes:
+  mongo_data:
+
+networks:
+  kmtb-payload:
+    driver: bridge
